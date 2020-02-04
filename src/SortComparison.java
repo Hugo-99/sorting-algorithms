@@ -18,7 +18,6 @@
      *
      */
     static double [] insertionSort (double a[]){
-
         //todo: implement the sort
     }//end insertionsort
 	
