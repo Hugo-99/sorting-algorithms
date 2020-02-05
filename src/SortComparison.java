@@ -19,6 +19,7 @@
      */
     static double [] insertionSort (double a[]){
         //todo: implement the sort
+        return null;
     }//end insertionsort
 	
 	    /**
@@ -31,7 +32,7 @@
     static double [] selectionSort (double a[]){
 
          //todo: implement the sort
-
+        return null;
     }//end selectionsort
 
     /**
@@ -44,7 +45,7 @@
     static double [] quickSort (double a[]){
 	
 		 //todo: implement the sort
-
+        return null;
     }//end quicksort
 
     /**
@@ -65,7 +66,7 @@
     static double[] mergeSortIterative (double a[]) {
 
 		 //todo: implement the sort
-	
+        return null;
     }//end mergesortIterative
     
     
@@ -81,7 +82,7 @@
     	
 
     	//todo: implement the sort
-	
+        return null;
    }//end mergeSortRecursive
     	
     
