@@ -18,8 +18,19 @@
      *
      */
     static double [] insertionSort (double a[]){
-        //todo: implement the sort
-        return null;
+        double element = 0;
+        for(int i=1; i<a.length; i++)
+        {
+            element = a[i];
+            int j = i-1;
+            while(j>=0 && a[j]>element)
+            {
+                a[j+1] = a[j];
+                j = j-1;
+            }
+            a[j+1]=element;
+        }
+        return a;
     }//end insertionsort
 	
 	    /**
@@ -30,9 +41,18 @@
      *
      */
     static double [] selectionSort (double a[]){
-
-         //todo: implement the sort
-        return null;
+        for(int i=0; i<a.length; i++) {
+            int minIndex = i;
+            int j = i+1;
+            while(j<a.length && a[j]<a[minIndex]){
+                minIndex = j;
+                j++;
+            }
+            double tmp = a[i];
+            a[i]=a[minIndex];
+            a[minIndex]=tmp;
+        }
+        return a;
     }//end selectionsort
 
     /**
@@ -44,10 +64,13 @@
      */
     static double [] quickSort (double a[]){
 	
-		 //todo: implement the sort
+
         return null;
     }//end quicksort
 
+    static double [] quickSort (double a[], int low, int high){
+
+    }
     /**
      * Sorts an array of doubles using Merge Sort.
      * This method is static, thus it can be called as SortComparison.sort(a)
