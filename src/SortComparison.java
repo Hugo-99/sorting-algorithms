@@ -63,14 +63,47 @@
      *
      */
     static double [] quickSort (double a[]){
-	
-
-        return null;
+	    quickSort(a,0,a.length-1);
+        return a;
     }//end quicksort
 
-    static double [] quickSort (double a[], int low, int high){
+    static int partition(double a[], int low, int high){
+        int i = low;
+        int j = high+1;
+        double pivot = a[low];
 
+        while(true){
+            while(a[i++]<pivot){
+                if(i==high){
+                    break;
+                }
+            }
+            while(a[--j]>pivot){
+                if(j==low){
+                    break;
+                }
+            }
+            if(i==j){
+                break;
+            }
+            double tmp = a[i];
+            a[i] = a[j];
+            a[j] = tmp;
+        }
+        a[low]=a[j];
+        a[high]=pivot;
+        return j;
     }
+
+    static void quickSort (double a[], int low, int high){
+        if(high<=low){
+            return;
+        }
+        int pivotPosition = partition(a,low,high);
+        quickSort(a,low,pivotPosition-1);
+        quickSort(a,pivotPosition+1,high);
+    }
+
     /**
      * Sorts an array of doubles using Merge Sort.
      * This method is static, thus it can be called as SortComparison.sort(a)
