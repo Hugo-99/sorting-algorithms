@@ -121,11 +121,45 @@
 
     static double[] mergeSortIterative (double a[]) {
 
-		 //todo: implement the sort
-        return null;
+        double aux[] = new double[a.length];
+        mergeSortIterative(a,aux,0,a.length-1);
+
+        return a;
     }//end mergesortIterative
-    
-    
+
+    static void mergeSortIterative (double a[], double aux[], int low, int high) {
+
+        for(int s = 1; s<=high-low; s = s*2){
+            for(int z = low; z<high; z+= s*2){
+                int start = z;
+                int mid = z+s-1;
+                int end = ((z+s-1)>high) ? high:(z+s-1);
+                iterativeMerge(a,aux,start,mid,end);
+            }
+        }
+    }
+
+    static void iterativeMerge(double a[], double aux[], int low, int mid, int high){
+
+        int k = low, i = low, j = mid+1;
+        while(i<=mid && j<=high){
+            if(a[i]<a[j]) {
+                aux[k++] = a[i++];
+            }
+            else {
+                aux[k++] = a[j++];
+            }
+        }
+        for(;i<=mid;i++){
+            aux[k++]=a[i];
+        }
+        for(;j<=high;j++){
+            aux[k++]=a[j];
+        }
+        for(k=0; k<aux.length; k++){
+            a[k]=aux[k];
+        }
+    }
     
     /**
      * Sorts an array of doubles using recursive implementation of Merge Sort.
@@ -135,21 +169,56 @@
      * @return after the method returns, the array must be in ascending sorted order.
      */
     static double[] mergeSortRecursive (double a[]) {
-    	
 
-    	//todo: implement the sort
-        return null;
+    	double[] aux = new double[a.length-1];
+    	mergeSortRecursive(a,aux,0,a.length-1);
+        return a;
    }//end mergeSortRecursive
-    	
-    
+
+    static void mergeSortRecursive (double a[], double aux[], int low, int high) {
+
+        if(high<=low){
+            return;
+        }
+        int mid = low + (high-low)/2;
+        mergeSortRecursive(a,aux, low,mid);
+        mergeSortRecursive(a,aux,mid+1,high);
+        recursiveMerge(a,aux,low,mid,high);
+    }
+
+    static void recursiveMerge (double a[], double aux[], int low, int mid, int high){
+
+        for(int i=0; i<a.length; i++){
+            aux[i]=a[i];
+        }
+
+        int m = low;
+        int n = mid+1;
+        for(int j=low; j<=high; j++){
+            if(m<mid){
+                a[j]=aux[n++];
+            }
+            else if(n>high){
+                a[j]=aux[m++];
+            }
+            else if(aux[m]<aux[n]){
+                a[j]=aux[m++];
+            }
+            else{
+                a[j]=aux[n++];
+            }
+        }
+    }
 
 
-   
+
+
+
 
 
     public static void main(String[] args) {
 
-        //todo: do experiments as per assignment instructions
+
     }
 
  }//end class
