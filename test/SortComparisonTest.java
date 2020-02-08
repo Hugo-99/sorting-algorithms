@@ -14,25 +14,6 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class SortComparisonTest
 {
-    //~ Constructor ........................................................
-    @Test
-    public void testConstructor()
-    {
-        new SortComparison();
-    }
-
-    //~ Public Methods ........................................................
-
-    // ----------------------------------------------------------
-    /**
-     * Check that the methods work for empty arrays
-     */
-    @Test
-    public void testEmpty()
-    {
-    }
-
-
     // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
     // be executed at least once from at least one test.
 
@@ -47,5 +28,24 @@ public class SortComparisonTest
         //TODO: implement this method
     }
 
+    @Test
+    public void insertionSort() {
+    }
+
+    @Test
+    public void selectionSort() {
+    }
+
+    @Test
+    public void quickSort() {
+    }
+
+    @Test
+    public void mergeSortIterative() {
+    }
+
+    @Test
+    public void mergeSortRecursive() {
+    }
 }
 

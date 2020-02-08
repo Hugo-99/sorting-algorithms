@@ -68,40 +68,32 @@
     }//end quicksort
 
     static int partition(double a[], int low, int high){
-        int i = low;
-        int j = high+1;
-        double pivot = a[low];
+        double tmp;
+        int i = low-1;
+        double pivot = a[high];
 
-        while(true){
-            while(a[i++]<pivot){
-                if(i==high){
-                    break;
-                }
+        for(int j = low; j<high; j++){
+            if(a[j]<pivot){
+                i++;
+                tmp = a[i];
+                a[i]= a[j];
+                a[j] = tmp;
             }
-            while(a[--j]>pivot){
-                if(j==low){
-                    break;
-                }
-            }
-            if(i==j){
-                break;
-            }
-            double tmp = a[i];
-            a[i] = a[j];
-            a[j] = tmp;
         }
-        a[low]=a[j];
-        a[high]=pivot;
-        return j;
+        tmp = a[i+1];
+        a[i+1] = a[high];
+        a[high] = tmp;
+
+        return i+1;
     }
 
     static void quickSort (double a[], int low, int high){
-        if(high<=low){
-            return;
+        if(low < high){
+            int pivotPosition = partition(a,low,high);
+            quickSort(a,low,pivotPosition-1);
+            quickSort(a,pivotPosition+1,high);
         }
-        int pivotPosition = partition(a,low,high);
-        quickSort(a,low,pivotPosition-1);
-        quickSort(a,pivotPosition+1,high);
+
     }
 
     /**
@@ -133,7 +125,7 @@
             for(int z = low; z<high; z+= s*2){
                 int start = z;
                 int mid = z+s-1;
-                int end = ((z+s-1)>high) ? high:(z+s-1);
+                int end = ((z+s*2-1)>high) ? high:(z+s*2-1);
                 iterativeMerge(a,aux,start,mid,end);
             }
         }
@@ -150,13 +142,10 @@
                 aux[k++] = a[j++];
             }
         }
-        for(;i<=mid;i++){
-            aux[k++]=a[i];
+        while(i<a.length && i<=mid){
+            aux[k++]=a[i++];
         }
-        for(;j<=high;j++){
-            aux[k++]=a[j];
-        }
-        for(k=0; k<aux.length; k++){
+        for(k=low; k<=high; k++){
             a[k]=aux[k];
         }
     }
@@ -170,7 +159,7 @@
      */
     static double[] mergeSortRecursive (double a[]) {
 
-    	double[] aux = new double[a.length-1];
+    	double[] aux = new double[a.length];
     	mergeSortRecursive(a,aux,0,a.length-1);
         return a;
    }//end mergeSortRecursive
@@ -188,14 +177,14 @@
 
     static void recursiveMerge (double a[], double aux[], int low, int mid, int high){
 
-        for(int i=0; i<a.length; i++){
+        for(int i=low; i<=high; i++){
             aux[i]=a[i];
         }
 
         int m = low;
         int n = mid+1;
         for(int j=low; j<=high; j++){
-            if(m<mid){
+            if(m>mid){
                 a[j]=aux[n++];
             }
             else if(n>high){
@@ -208,17 +197,6 @@
                 a[j]=aux[n++];
             }
         }
-    }
-
-
-
-
-
-
-
-    public static void main(String[] args) {
-
-
     }
 
  }//end class
