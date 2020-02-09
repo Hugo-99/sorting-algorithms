@@ -1,5 +1,7 @@
 // -------------------------------------------------------------------------
 
+import java.util.Arrays;
+
 /**
  *  This class contains static methods that implementing sorting of an array of numbers
  *  using different sort algorithms.
@@ -44,8 +46,10 @@
         for(int i=0; i<a.length; i++) {
             int minIndex = i;
             int j = i+1;
-            while(j<a.length && a[j]<a[minIndex]){
-                minIndex = j;
+            while(j<a.length){
+                if(a[j]<a[minIndex]){
+                    minIndex = j;
+                }
                 j++;
             }
             double tmp = a[i];
@@ -113,7 +117,7 @@
 
     static double[] mergeSortIterative (double a[]) {
 
-        double aux[] = new double[a.length];
+        double aux[] = Arrays.copyOf(a,a.length);
         mergeSortIterative(a,aux,0,a.length-1);
 
         return a;
@@ -125,7 +129,7 @@
             for(int z = low; z<high; z+= s*2){
                 int start = z;
                 int mid = z+s-1;
-                int end = ((z+s*2-1)>high) ? high:(z+s*2-1);
+                int end = Integer.min(high,(z+s*2-1));
                 iterativeMerge(a,aux,start,mid,end);
             }
         }
@@ -142,12 +146,49 @@
                 aux[k++] = a[j++];
             }
         }
-        while(i<a.length && i<=mid){
+        while(i<=mid){
             aux[k++]=a[i++];
         }
         for(k=low; k<=high; k++){
             a[k]=aux[k];
         }
+//        int i,j,k;
+//        int count1 = mid - low +1;
+//        int count2 = high - mid;
+//
+//        double[] left = new double[count1];
+//        double[] right = new double[count2];
+//
+//        for(i=0; i<count1; i++){
+//            left[i] = a[low+1];
+//        }
+//        for(j=0; j<count2; j++){
+//            right[j] = a[mid+1+j];
+//        }
+//
+//        i=0;
+//        j=0;
+//        k=low;
+//        while(i<count1 && j<count2){
+//            if(left[i]<=right[j]){
+//                a[k]=left[i];
+//            }
+//            else{
+//                a[k]=right[j];
+//                j++;
+//            }
+//            k++;
+//        }
+//        while(i<count1){
+//            a[k]=left[i];
+//            i++;
+//            k++;
+//        }
+//        while(j<count2){
+//            a[k]=right[j];
+//            j++;
+//            k++;
+//        }
     }
     
     /**
@@ -199,5 +240,13 @@
         }
     }
 
- }//end class
+    public static void main(String[] args) {
+
+        double[] a = {9,8,7,6,1,2};
+        double[] tmp = mergeSortIterative(a);
+        for(int i=0; i<tmp.length; i++){
+            System.out.print(tmp[i]+",");
+        }
+    }
+    }//end class
 

@@ -1,8 +1,10 @@
-import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import java.util.Arrays;
+
+import static org.junit.Assert.*;
 
 //-------------------------------------------------------------------------
 /**
@@ -14,38 +16,49 @@ import org.junit.runners.JUnit4;
 @RunWith(JUnit4.class)
 public class SortComparisonTest
 {
-    // TODO: add more tests here. Each line of code and ech decision in Collinear.java should
-    // be executed at least once from at least one test.
-
-    // ----------------------------------------------------------
-    /**
-     *  Main Method.
-     *  Use this main method to create the experiments needed to answer the experimental performance questions of this assignment.
-     *
-     */
-    public static void main(String[] args)
-    {
-        //TODO: implement this method
-    }
-
     @Test
     public void insertionSort() {
+        double[] unsortedList = {9,8,7,6,5,0,1,2,3,4};
+        double[] sortedList = {0,1,2,3,4,5,6,7,8,9};
+
+        assertTrue("Sort a list of double with insertion sorting algorithm",Arrays.equals(sortedList, SortComparison.insertionSort(unsortedList)));
+
     }
 
     @Test
     public void selectionSort() {
+        double[] unsortedList = {9,8,7,6,5,0,1,2,3,4};
+        double[] sortedList = {0,1,2,3,4,5,6,7,8,9};
+
+        assertTrue("Sort a list of double with selection sorting algorithm",Arrays.equals(sortedList, SortComparison.selectionSort(unsortedList)));
     }
 
     @Test
     public void quickSort() {
+        double[] unsortedList = {9,8,7,6,5,0,1,2,3,4};
+        double[] sortedList = {0,1,2,3,4,5,6,7,8,9};
+
+        assertTrue("Sort a list of double with quicksort algorithm",Arrays.equals(sortedList, SortComparison.quickSort(unsortedList)));
     }
 
     @Test
     public void mergeSortIterative() {
+        double[] unsortedList = {9,8,7,6,5,0,1,2,3,4};
+        double[] sortedList = {0,1,2,3,4,5,6,7,8,9};
+
+        assertTrue("Sort a list of double with iterative merge sorting algorithm",Arrays.equals(sortedList, SortComparison.mergeSortIterative(unsortedList)));
     }
 
     @Test
     public void mergeSortRecursive() {
+        double[] unsortedList = {9,8,7,6,5,0,1,2,3,4};
+        double[] sortedList = {0,1,2,3,4,5,6,7,8,9};
+
+        assertTrue("Sort a list of double with recursive merge sorting algorithm",Arrays.equals(sortedList, SortComparison.mergeSortRecursive(unsortedList)));
+    }
+
+    public static void main(String[] args){
+
     }
 }
 
