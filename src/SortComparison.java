@@ -128,7 +128,7 @@ import java.util.Arrays;
         for(int s = 1; s<=high-low; s = s*2){
             for(int z = low; z<high; z+= s*2){
                 int start = z;
-                int mid = z+s-1;
+                int mid = Integer.min(z+s-1,high);
                 int end = Integer.min(high,(z+s*2-1));
                 iterativeMerge(a,aux,start,mid,end);
             }
