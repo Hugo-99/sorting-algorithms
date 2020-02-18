@@ -152,43 +152,6 @@ import java.util.Arrays;
         for(k=low; k<=high; k++){
             a[k]=aux[k];
         }
-//        int i,j,k;
-//        int count1 = mid - low +1;
-//        int count2 = high - mid;
-//
-//        double[] left = new double[count1];
-//        double[] right = new double[count2];
-//
-//        for(i=0; i<count1; i++){
-//            left[i] = a[low+1];
-//        }
-//        for(j=0; j<count2; j++){
-//            right[j] = a[mid+1+j];
-//        }
-//
-//        i=0;
-//        j=0;
-//        k=low;
-//        while(i<count1 && j<count2){
-//            if(left[i]<=right[j]){
-//                a[k]=left[i];
-//            }
-//            else{
-//                a[k]=right[j];
-//                j++;
-//            }
-//            k++;
-//        }
-//        while(i<count1){
-//            a[k]=left[i];
-//            i++;
-//            k++;
-//        }
-//        while(j<count2){
-//            a[k]=right[j];
-//            j++;
-//            k++;
-//        }
     }
     
     /**
